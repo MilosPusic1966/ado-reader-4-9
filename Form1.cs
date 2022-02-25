@@ -32,7 +32,7 @@ namespace ado_reader_4_9
             SqlDataReader citac = komanda.ExecuteReader();
             double zbir = 25.50;
             int zbir2 = 345;
-            string test2 = zbir2.ToString("D8");
+            string test2 = string.Format("{0,5:###.0}", zbir);
             listBox1.Items.Add(test2);
             string test = String.Format("ovo je primer {1:F3} teksta", zbir, zbir+5);
             listBox1.Items.Add(test);
