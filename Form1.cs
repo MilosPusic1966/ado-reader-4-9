@@ -17,6 +17,10 @@ namespace ado_reader_4_9
         {
             InitializeComponent();
         }
+        private string sredi2(double broj, int duzina)
+        {
+            return string.Format("{0,10:###.0}", broj);
+        }
         public string sredi(string tekst, int duzina)
         {
             string pom;
@@ -32,7 +36,7 @@ namespace ado_reader_4_9
             SqlDataReader citac = komanda.ExecuteReader();
             double zbir = 25.50;
             int zbir2 = 345;
-            string test2 = string.Format("{0,5:###.0}", zbir);
+            string test2 = string.Format("{0,10:###}", zbir);
             listBox1.Items.Add(test2);
             string test = String.Format("ovo je primer {1:F3} teksta", zbir, zbir+5);
             listBox1.Items.Add(test);
@@ -48,8 +52,9 @@ namespace ado_reader_4_9
                 else izlaz = (double)citac["izlaz"];
 
                 zbir = zbir + ulaz - izlaz;
-                string red = sredi(citac["ulaz"].ToString(), 10) + sredi(citac["izlaz"].ToString(), 10);
-                red = red + sredi(zbir.ToString(), 10) + sredi(citac["povod"].ToString(), 15);
+                // string red = sredi(citac["ulaz"].ToString(), 10) + sredi(citac["izlaz"].ToString(), 10);
+                // red = red + sredi(zbir.ToString(), 10) + sredi(citac["povod"].ToString(), 15);
+                string red = sredi2(ulaz, 10) + sredi2(izlaz, 10);
                 listBox1.Items.Add(red);
             }
             veza.Close();
